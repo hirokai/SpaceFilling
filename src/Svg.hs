@@ -70,17 +70,17 @@ mk_path_d closed ps =
 
 tree_line_to_svg :: DrawType -> Tree Coord -> S.Svg
 tree_line_to_svg typ t = 
-    let ps = parent_child_pairs t
+    let ps = remove_invalid $ parent_child_pairs2 t
     in
         S.g $ do
-            forM_ ps $ \(p,q) -> do
+            forM_ ps $ \(p,q,leaf) -> do
                 case typ of
                     DrawLine ->
                         S.path ! SA.strokeWidth "1" ! SA.stroke "red" ! SA.fill "none" !
                             SA.d (S.toValue $ mk_path_d False [p,q])
                     DrawTri ->
                         S.path ! SA.strokeWidth "0.2" ! SA.stroke "none" ! SA.fill "blue" !
-                            SA.d (S.toValue $ mk_path_d True (mk_tri (5*pi/180) False p q))
+                            SA.d (S.toValue $ mk_path_d True (mk_tri (5*pi/180) (not leaf) p q))
 
 
 draw_level level = do

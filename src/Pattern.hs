@@ -62,6 +62,9 @@ remove_duplicate t =
     let temp = add_history t
     in temp
 
+remove_invalid :: [(Coord,Coord,Bool)] -> [(Coord,Coord,Bool)]
+remove_invalid = Prelude.filter (\(Coord x1 y1,(Coord x2 y2),_) -> not (x1 == x2 && y1 == y2))
+
 tree_line_example :: Tree Coord
 tree_line_example = Node (Coord 50 50) [n 0 100,n 100 0,n 100 100]
     where n x y = Node (Coord x y) []

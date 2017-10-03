@@ -37,9 +37,6 @@ polyline_footer s = do
 x (Coord _x _) = _x
 y (Coord _ _y) = _y
 
-remove_invalid :: [(Coord,Coord,Bool)] -> [(Coord,Coord,Bool)]
-remove_invalid = Prelude.filter (\(Coord x1 y1,(Coord x2 y2),_) -> not (x1 == x2 && y1 == y2))
-
 contents :: OutputStream Text -> Double -> Tree Coord -> IO ()
 contents s angle lines = do
     let ls = remove_invalid $ parent_child_pairs2 lines
