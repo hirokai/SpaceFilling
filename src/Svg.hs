@@ -51,7 +51,7 @@ write_svg lines ts = do
     TLIO.writeFile "testout.html" $ renderHtml $
         H.html $ H.body $
             S.svg ! SA.width "1200" ! SA.height "1200" $ do
-                S.g ! SA.transform "translate (0,100)" $ do
+                S.g ! SA.transform "translate (100,100) scale (5)" $ do
                     S.g $ do
                         mapM_ (\t -> to_svgPath [t]) ts
                     tree_line_to_svg DrawTri lines

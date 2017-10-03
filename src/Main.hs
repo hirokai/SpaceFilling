@@ -17,9 +17,14 @@ import Dxf (write_dxf)
    
 main :: IO ()
 main = do
-    forM_ [1..8] (run_dxf 1)
-    forM_ [1..8] (run_dxf 3)
-    forM_ [1..8] (run_dxf 5)
+    -- forM_ [1..8] (run_dxf 1)
+    -- forM_ [1..8] (run_dxf 3)
+    -- forM_ [1..8] (run_dxf 5)
+    -- forM_ [1..10] (run_dxf 5)
+    -- forM_ [6] (run_dxf 1)
+    -- forM_ [1..8] (run_dxf 7)
+    run 6
+    -- forM_ [1..8] (run_dxf 10)
 
 
 run :: Int -> IO ()
