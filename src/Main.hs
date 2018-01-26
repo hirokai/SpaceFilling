@@ -24,14 +24,14 @@ main = do
     -- forM_ [6] (run_dxf 1)
     -- forM_ [1..8] (run_dxf 7)
     -- forM_ [1..8] (run_dxf 10)
-    -- forM_  [(x,y) | y <- [1..9], x <- [1,5,10]] (uncurry run_svg)
+    forM_  [(x,y) | y <- [1..9], x <- [1,3,5,10]] (uncurry run_svg)
     -- mapM_ (run_svg 5) [1,6,7,8,9]
-    mapM_ (run_svg 1) [2,3,4]
+    -- mapM_ (run_svg 1) [2,3,4]
 
 
 run_svg :: Double -> Int -> IO ()
 run_svg angle max_level = do
-    let path = "trees " ++ show max_level ++ "G " ++ show angle ++ " deg.html"
+    let path = "/Users/hiroyuki/" ++ "trees " ++ show max_level ++ "G " ++ show angle ++ " deg.svg"
     putStrLn $ "Generating...: " ++ path
     let tr = recursive_split2 max_level 1 tri
     let lines = connect tr

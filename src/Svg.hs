@@ -50,13 +50,13 @@ mkPath w s f ps =
 write_svg path angle lines ts = do
     let tris = mkTriangles angle lines
     let path_map = path ++ ".distance.csv"
-    write_distance_map path_map 10 1200 tris
+    -- write_distance_map path_map 10 1200 tris
     TLIO.writeFile path $ renderHtml $
-        H.html $ H.body $
+        -- H.html $ H.body $
             S.svg ! SA.width "1200" ! SA.height "1200" $ do
                 S.g ! SA.transform "translate (100,100) scale (5)" $ do
-                    S.g $ do
-                        mapM_ (\t -> to_svgPath [t]) ts
+                    -- S.g $ do
+                    --     mapM_ (\t -> to_svgPath [t]) ts
                     trianglesToSvg tris
 
 mk_path_d :: Bool -> [Coord] -> Text
